@@ -1,64 +1,41 @@
-![screenshot](https://mp-bca925c9-72bc-4e92-8c87-d596015241bf.cdn.bspapp.com/2024/06/29/48052030-56853423-SafariLight.png)
+# PDF Filler — Landing Page
 
-# [inWind Landing Page Template](https://landingpage.huglemon.com/)
+A free, open-source, and high-performance landing page built with Next.js. Designed for SaaS projects with full SEO optimization and responsive design.
 
-🌍 *[English](README.md) ∙ [简体中文](README-zh.md)*
+### Features
 
-### What is inWind Landing Page
+- Built on **Next.js 14** for fast server-side rendering and SEO
+- Styled with **TailwindCSS** and **DaisyUI** for multi-theme support
+- Smooth animations powered by **framer-motion**
+- Fully responsive across all screen sizes
+- Clean, minimal codebase — easy to customize
 
-inWind Landing Page is a Landing Page template developed for global SaaS projects based on Next.js. It is completely open source, free, and offers perfect SEO and multi-language support.
+### Third-Party Libraries
 
-### Why develop inWind Landing Page
+- [DaisyUI](https://daisyui.com/) — multi-theme switching and base styles
+- [framer-motion](https://www.framer.com/motion/) — animation effects
+- [react-icons](https://react-icons.github.io/react-icons/) — comprehensive icon library
 
-1. First, influenced by the big shot @weijunext, I decided to also open source a Landing Page for everyone to choose from;
-2. Secondly, I have also been developing independent B2B websites for traditional factories recently, but my original uni-app development is a SPA project, which is very unfriendly to SEO, so I re-studied Next.js development, which is also a practice project;
-3. Finally, I also hope to use this project to meet more global partners. If it is helpful to you or if you need any other help, you can contact me to exchange ideas~
+### Getting Started
 
-### Performance and SEO
+```bash
+npm install
+npm run dev
+```
 
-![Performance and SEO](https://mp-bca925c9-72bc-4e92-8c87-d596015241bf.cdn.bspapp.com/2024/06/29/50354654-99418765-SafariLight.png)
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Third-party libraries used
+### Build for Production
 
-- [DaisyUI](https://daisyui.com/): Used to implement multi-theme switching and some basic styles (recommended for friends who have never used TailwindCSS, you can try it, you can remember fewer class names)
-- [framer-motion](https://www.framer.com/motion/): Used to complete most of the animation effects
-- [react-icons](https://react-icons.github.io/react-icons/): Recommended for React developers, a very convenient and comprehensive icon library
+```bash
+npm run build
+npm start
+```
 
+### Author
 
-### Online Preview
+**Mufaddal**
 
-[landingpage.huglemon.com](https://landingpage.huglemon.com/)
+---
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=huglemon/inwind-landing-page&type=Date)](https://star-history.com/#huglemon/inwind-landing-page&Date)
-
-
-### Thanks and Support
-
--   Thanks to [@weijunext](https://weijunext.com/) for the open-source landingpage project, which referenced a lot of content
-
-### Contributors
-
-<a href="https://github.com/huglemon/inwind-landing-page/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=huglemon/inwind-landing-page" />
-</a>
-
-### Let's be friends
-
--   QQ: 123060128
--   Twitter: [@huglemon520](x.com/huglemon520)
--   Email: [karma.zhao@gmail.com](mailto:karma.zhao@gmail.com)
--   Blog: [https://huglemon.com](https://huglemon.com)
-
-### Sponsorship
-
-If this project is helpful to you, you can buy me a can of Red Bull or a cofee
-
-[![buymeacoffee](https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png "buymeacoffee")](https://buymeacoffee.com/huglemon "buymeacoffee")
-![pay qrcode](https://mp-bca925c9-72bc-4e92-8c87-d596015241bf.cdn.bspapp.com/2024/06/29/48706370-14858221-WechatIMG135.jpg)
-
-### Ads
-[![Generate your Labubu wallpaper](https://labububox.app/og.png)](https://labububox.app "Labubu Wallpaper Box - Generate your Labubu wallpaper with AI and free download")
-[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
-
+Built with [Next.js](https://nextjs.org/) · Styled with [TailwindCSS](https://tailwindcss.com/)

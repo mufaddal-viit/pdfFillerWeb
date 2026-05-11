@@ -16,18 +16,14 @@ export default function LangSwitch() {
 			const pathParts = pathname.split('/').filter(Boolean);
 
 			if (pathParts.length === 0) {
-				// 处理根路径
 				newPathname = `/${value}`;
 			} else if (pathParts[0] === lang) {
-				// 当前路径已经包含语言代码
 				pathParts[0] = value;
 				newPathname = '/' + pathParts.join('/');
 			} else {
-				// 当前路径不包含语言代码
 				newPathname = `/${value}${pathname}`;
 			}
 
-			// 确保路径末尾有斜杠
 			newPathname = newPathname.endsWith('/') ? newPathname : newPathname + '/';
 
 			router.replace(newPathname);
