@@ -1,36 +1,72 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
+############################
+# Dependencies
+############################
+node_modules/
 /.pnp
 .pnp.js
 .yarn/install-state.gz
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+############################
+# Logs
+############################
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# local env files
-.env*.local
+############################
+# Local env files
+############################
+.env
+.env.*
+!.env.example
+!.env.*.example
 
-# vercel
-.vercel
+############################
+# Next.js / React / Build output
+############################
+.next/
+out/
 
-# typescript
+# Production builds
+build/
+dist/
+
+# Cache / coverage
+coverage/
+.cache/
+
+# TypeScript
 *.tsbuildinfo
+
+# Misc
+.DS_Store
+Thumbs.db
+
+############################
+# IDEs / Editors
+############################
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+############################
+# Optional: platform / hosting
+############################
+.vercel/
+
+############################
+# Certs (sometimes kept locally)
+############################
+*.pem
+
+# Next.js types (safe to ignore)
 next-env.d.ts
+
