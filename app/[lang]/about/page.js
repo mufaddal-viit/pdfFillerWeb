@@ -1,5 +1,4 @@
 'use client';
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { BsPatchQuestionFill } from 'react-icons/bs';
@@ -7,33 +6,14 @@ import { RiTeamFill } from 'react-icons/ri';
 
 import TestimonialCard from '@/components/home/testimonial/card';
 import { TestimonialsList } from '@/lib/testimonialsList';
-import { usePathname } from 'next/navigation';
-import { defaultLocale, getDictionary } from '@/lib/i18n';
+import { defaultLocale } from '@/lib/i18n';
+import { useDictionary } from '@/lib/hooks/useDictionary';
 
 import Cta from '@/components/home/cta';
 
-export default function Page({ params }) {
-	const [dict, setDict] = useState({ About: {}, Testimonial: {}, CTA: {}, CTAButton: {} });
-
-	useEffect(() => {
-		const fetchDictionary = async () => {
-			const d = await getDictionary(langName);
-			setDict(d);
-		};
-		fetchDictionary();
-	}, []);
-
-	const pathname = usePathname();
-	const [langName, setLangName] = useState(params.lang || defaultLocale);
-	useEffect(() => {
-		if (pathname === '/') {
-			setLangName(defaultLocale);
-		} else {
-			setLangName(pathname.split('/')[1]);
-		}
-	}, [pathname, langName]);
-
-	const list = TestimonialsList[`TESTIMONIAL_${langName.toUpperCase()}`] || [];
+export default function Page() {
+	const dict = useDictionary();
+	const list = TestimonialsList[`TESTIMONIAL_${defaultLocale.toUpperCase()}`] || [];
 
 	return (
 		<main className='container mx-auto px-5'>
@@ -126,7 +106,7 @@ export default function Page({ params }) {
 								<h2 className='text-3xl font-bold'>{dict.About.why}</h2>
 								<BsPatchQuestionFill size={48} />
 							</div>
-							<p className={`text-lg break-words ${langName === 'ar' && 'text-right'}`} >{dict.About.why_content}</p>
+							<p className='text-lg break-words'>{dict.About.why_content}</p>
 						</div>
 					</div>
 				</motion.div>
@@ -141,7 +121,7 @@ export default function Page({ params }) {
 								<RiTeamFill size={48} />
 								<h2 className='text-3xl font-bold'>{dict.About.team}</h2>
 							</div>
-							<p className={`text-lg break-words ${langName === 'ar' && 'text-right'}`} >{dict.About.team_content}</p>
+							<p className='text-lg break-words'>{dict.About.team_content}</p>
 						</div>
 						<div className='w-full md:w-3/5 relative rounded-2xl overflow-hidden shadow-xl'>
 							<Image
@@ -194,7 +174,7 @@ export default function Page({ params }) {
 								<TestimonialCard
 									key={index}
 									testimonialItem={item}
-									langName={langName}
+									langName={defaultLocale}
 								/>
 							);
 						})}

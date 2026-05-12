@@ -2,30 +2,15 @@
 import Image from 'next/image';
 import { MdMenu } from 'react-icons/md';
 import { SiGithub } from 'react-icons/si';
-import { useEffect, useState } from 'react';
 import ThemeToggle from './themeToggle';
 import LangSwitch from './langSwitch';
 
-import { usePathname } from 'next/navigation';
 import { defaultLocale } from '@/lib/i18n';
 import { NavLinksList } from '@/lib/navLinksList';
 
 export default function Navbar() {
-	const pathname = usePathname();
-	const [langName, setLangName] = useState(defaultLocale);
-	const [linkList, setLinkList] = useState([]);
-
-	useEffect(() => {
-		const fetchLinksList = async () => {
-			if (pathname === '/') {
-				setLangName(defaultLocale);
-			} else {
-				setLangName(pathname.split('/')[1]);
-			}
-			setLinkList(NavLinksList[`LINK_${langName.toUpperCase()}`] || []);
-		};
-		fetchLinksList();
-	}, [pathname, langName]);
+	const langName = defaultLocale;
+	const linkList = NavLinksList[`LINK_${defaultLocale.toUpperCase()}`] || [];
 
 	return (
 		<header className='w-full relative z-50 bg-base-100 p-5 pb-0 container mx-auto md:mb-5 flex justify-between items-center'>
@@ -77,7 +62,7 @@ export default function Navbar() {
 					</a>
 				</label>
 				<ThemeToggle />
-				<LangSwitch />
+				{/* <LangSwitch /> */}
 				<details className='flex md:hidden dropdown dropdown-end'>
 					<summary className='btn btn-ghost p-0'>
 						<MdMenu size={18} />

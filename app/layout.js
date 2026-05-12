@@ -8,7 +8,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export default function RootLayout({ children }) {
-	const fontClass = jakarta.className || ''  // 确保有默认值
+	const fontClass = jakarta.className || ''
 	
 	return (
 		<html lang="en" className={fontClass}>

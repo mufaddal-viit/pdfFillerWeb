@@ -3,27 +3,26 @@ import BlogCard from '@/components/blog/card';
 import BlogList from '@/locales/blog/list.json';
 import { defaultLocale, getDictionary } from '@/lib/i18n';
 import { SiteConfig } from '@/lib/config/site';
-export async function generateMetadata({ params, searchParams }) {
-	const langName = params.lang || defaultLocale;
-	const dict = await getDictionary(langName);
+export function generateMetadata() {
+	const dict = getDictionary();
+	const site = SiteConfig[defaultLocale];
 
 	return {
-		title: dict['Blog']['title'] + ' - ' + SiteConfig[langName].name,
+		title: dict['Blog']['title'] + ' - ' + site.name,
 		description: dict['Blog']['description'],
-		keywords: SiteConfig[langName].keywords,
-		authors: SiteConfig[langName].authors,
-		creator: SiteConfig[langName].creator,
-		icons: SiteConfig[langName].icons,
-		metadataBase: SiteConfig[langName].metadataBase,
-		openGraph: SiteConfig[langName].openGraph,
-		twitter: SiteConfig[langName].twitter,
+		keywords: site.keywords,
+		authors: site.authors,
+		creator: site.creator,
+		icons: site.icons,
+		metadataBase: site.metadataBase,
+		openGraph: site.openGraph,
+		twitter: site.twitter,
 	};
 }
 
-export default async function Page({ params }) {
-	const langName = params.lang || defaultLocale;
-	const dict = await getDictionary(langName);
-	const list = BlogList[langName];
+export default function Page() {
+	const dict = getDictionary();
+	const list = BlogList[defaultLocale];
 	const extendedList = Array.from({ length: 9 }, () => list[0]);
 
 	return (
@@ -34,12 +33,12 @@ export default async function Page({ params }) {
 			<div className='breadcrumbs text-sm relative z-10'>
 				<ul>
 					<li>
-						<a href={`/${langName}`}>
+						<a href={`/${defaultLocale}`}>
 							<IoMdHome />
 						</a>
 					</li>
 					<li>
-						<a href={`/${langName}/blog`}>{dict['Blog']['title']}</a>
+						<a href={`/${defaultLocale}/blog`}>{dict['Blog']['title']}</a>
 					</li>
 				</ul>
 			</div>
@@ -49,7 +48,7 @@ export default async function Page({ params }) {
 						{extendedList.map((item, index) => (
 							<BlogCard
 								key={index}
-								lang={params.lang || 'en'}
+								lang={defaultLocale}
 								item={item}
 							/>
 						))}

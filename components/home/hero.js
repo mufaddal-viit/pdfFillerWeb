@@ -53,9 +53,9 @@ export default function Hero({ locale, CTALocale }) {
 					<h2 className='w-full md:w-10/12 mx-auto text-xl md:text-2xl text-base-content/80 md:text-center mb-5 md:mb-10'>{locale.h2}</h2>
 
 					<div className='w-full md:w-8/12 mx-auto flex flex-col md:flex-row md:items-center justify-between gap-y-5'>
-						<HeroIcons />
+						<HeroIcons CTALocale={CTALocale} />
 
-						<div className='flex flex-col md:flex-row gap-2'>
+						{/* <div className='flex flex-col md:flex-row gap-2'>
 							<a
 								title='get source code'
 								className='btn btn-sm md:btn-md btn-base border-none hover:ring-1 ring-base-content text-base-100 hover:text-base-content bg-base-content hover:bg-base-100 rounded-full'
@@ -71,7 +71,7 @@ export default function Hero({ locale, CTALocale }) {
 							>
 								<IoDocumentText /> {CTALocale.btn2}
 							</a>
-						</div>
+						</div> */}
 					</div>
 				</motion.div>
 				<motion.div

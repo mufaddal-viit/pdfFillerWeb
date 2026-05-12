@@ -7,45 +7,34 @@ import Sidebar from '@/components/blog/sidebar';
 import { notFound } from 'next/navigation';
 import blog from '@/locales/blog/blog.json';
 
-// You can actually just send lang when you fetch content from the back-end
 import { SiteConfig } from '@/lib/config/site';
-export async function generateMetadata({ params, searchParams }) {
-	const langName = params.lang || defaultLocale;
+export function generateMetadata() {
+	const siteConfig = SiteConfig[defaultLocale];
+	const article = blog[defaultLocale];
 
-	let langSiteConfig = SiteConfig[langName];
+	const keywords = article.tagList.map((item) => item.name);
 
-	const article = blog[langName];
-
-	let keywords = article.tagList.map((item) => {
-		return item.name;
-	});
-
-	let openGraphConfig = langSiteConfig.openGraph;
-	openGraphConfig.title = article.name;
-	openGraphConfig.description = article.description;
-
-	let twitterConfig = langSiteConfig.twitter;
-	twitterConfig.title = article.name;
-	twitterConfig.description = article.description;
+	const openGraphConfig = { ...siteConfig.openGraph, title: article.name, description: article.description };
+	const twitterConfig = { ...siteConfig.twitter, title: article.name, description: article.description };
 
 	return {
-		title: article.name + ' - ' + langSiteConfig.name,
+		title: article.name + ' - ' + siteConfig.name,
 		description: article.description,
-		keywords: keywords,
-		metadataBase: langSiteConfig.metadataBase,
+		keywords,
+		metadataBase: siteConfig.metadataBase,
 		openGraph: openGraphConfig,
 		twitter: twitterConfig,
 	};
 }
 
-export default async function page({ params }) {
-	const langName = params.lang || defaultLocale;
-	const dict = await getDictionary(langName); // 获取内容
+export default function Page() {
+	const dict = getDictionary();
+	const article = blog[defaultLocale];
 
-	const article = blog[langName];
 	if (pubfn.isNull(article)) {
 		notFound();
 	}
+
 	return (
 		<main className='container mx-auto md:px-5'>
 			<div className='hidden md:block absolute left-[5%] top-[10%] z-0'>
@@ -54,15 +43,15 @@ export default async function page({ params }) {
 			<div className='breadcrumbs text-sm relative z-10'>
 				<ul>
 					<li>
-						<a href={`/${params.lang}`}>
+						<a href={`/${defaultLocale}`}>
 							<IoMdHome />
 						</a>
 					</li>
 					<li>
-						<a href={`/${params.lang}/blog`}>{dict['Blog']['title']}</a>
+						<a href={`/${defaultLocale}/blog`}>{dict['Blog']['title']}</a>
 					</li>
 					<li>
-						<a href={`/${params.lang}/blog/{article.url_name}`}>{article.name}</a>
+						<a href={`/${defaultLocale}/blog/${article.url_name}`}>{article.name}</a>
 					</li>
 				</ul>
 			</div>
@@ -82,11 +71,10 @@ export default async function page({ params }) {
 						</div>
 					</div>
 					<div className='divider'></div>
-					{/* 富文本内容 */}
 					<div className='prose'>{HTMLReactParser(article.content)}</div>
 				</div>
-				<div className='w-full md:w-1/3 '>
-					<Sidebar description={article.description} langName={langName} />
+				<div className='w-full md:w-1/3'>
+					<Sidebar description={article.description} langName={defaultLocale} />
 				</div>
 			</section>
 		</main>

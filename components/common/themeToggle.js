@@ -20,7 +20,7 @@ export default function ThemeToggle() {
   return (
     <label
       className='swap swap-rotate'
-      title={theme === 'corporate' ? '切换为暗色主题' : '切换为亮色主题'}>
+      title={theme === 'corporate' ? 'dark' : 'light'}>
       <input
         type='checkbox'
         className='theme-controller'
